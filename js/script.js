@@ -20,21 +20,24 @@ document
 
     //send the response to server
     try {
-      const response = await fetch("http://127.0.0:4500/form", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          firstname,
-          lastname,
-          email,
-          gender,
-          age,
-          address,
-          country,
-        }),
-      });
+      const response = await fetch(
+        "https://crud-backend-indol.vercel.app/api/form/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            firstname,
+            lastname,
+            email,
+            gender,
+            age,
+            address,
+            country,
+          }),
+        }
+      );
       const data = await response.json();
 
       if (response.ok) {
@@ -71,7 +74,9 @@ document.getElementById("viewDetails").addEventListener("submit", async (e) => {
     alert("Please enter an email!");
   }
   try {
-    const response = await fetch(`http://127.0.0:4500/form/${email}`);
+    const response = await fetch(
+      `https://crud-backend-indol.vercel.app/api/form/${email}`
+    );
     const data = await response.json();
 
     if (response.ok) {
@@ -134,18 +139,23 @@ document
         console.log(updateAddress);
 
         try {
-          const response = await fetch(`http://127.0.0:4500/form/${email}`, {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ updateAddress }),
-          });
+          const response = await fetch(
+            `https://crud-backend-indol.vercel.app/api/form/${email}`,
+            {
+              method: "PUT",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ updateAddress }),
+            }
+          );
 
           const result = await response.json();
 
           if (response.ok) {
             alert(result.message);
 
-            const response = await fetch(`http://127.0.0:4500/form/${email}`);
+            const response = await fetch(
+              `https://crud-backend-indol.vercel.app/api/form/${email}`
+            );
             const data = await response.json();
 
             document.getElementById("userDetails").innerHTML = `
@@ -193,9 +203,12 @@ document
     if (!confirm("Are you sure you want to delete your details?")) return;
 
     try {
-      const response = await fetch(`http://127.0.0:4500/form/${email}`, {
-        method: "DELETE",
-      });
+      const response = await fetch(
+        `https://crud-backend-indol.vercel.app/api/form/${email}`,
+        {
+          method: "DELETE",
+        }
+      );
 
       const data = await response.json();
       ser;
