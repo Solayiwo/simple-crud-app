@@ -211,7 +211,6 @@ document
       );
 
       const data = await response.json();
-      ser;
 
       if (response.ok) {
         alert(data.message);
