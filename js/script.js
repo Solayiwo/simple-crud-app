@@ -21,7 +21,7 @@ document
     //send the response to server
     try {
       const response = await fetch(
-        "https://crud-backend-indol.vercel.app/api/form/",
+        "https://crud-api-cyan.vercel.app/api/form/create/",
         {
           method: "POST",
           headers: {
@@ -75,7 +75,7 @@ document.getElementById("viewDetails").addEventListener("submit", async (e) => {
   }
   try {
     const response = await fetch(
-      `https://crud-backend-indol.vercel.app/api/form/${email}`
+      `https://crud-api-cyan.vercel.app/api/form/read/${email}`
     );
     const data = await response.json();
 
@@ -140,7 +140,7 @@ document
 
         try {
           const response = await fetch(
-            `https://crud-backend-indol.vercel.app/api/form/${email}`,
+            `https://crud-api-cyan.vercel.app/api/form/update/${email}`,
             {
               method: "PUT",
               headers: { "Content-Type": "application/json" },
@@ -154,11 +154,11 @@ document
             alert(result.message);
 
             const response = await fetch(
-              `https://crud-backend-indol.vercel.app/api/form/${email}`
+              `https://crud-api-cyan.vercel.app/api/form/read/${email}`
             );
             const data = await response.json();
 
-            document.getElementById("userDetails").innerHTML = `
+            document.getElementById("userDetails").innerHTML = `create
               <p>User Details</p>
               <div style="border: 1px dashed brown;">
                 <p style="border-bottom: 1px dashed brown; padding: 4px;"><strong>First Name</strong>: ${data.firstname}</p>
@@ -204,7 +204,7 @@ document
 
     try {
       const response = await fetch(
-        `https://crud-backend-indol.vercel.app/api/form/${email}`,
+        `https://crud-api-cyan.vercel.app/api/form/delete/${email}`,
         {
           method: "DELETE",
         }
